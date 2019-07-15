@@ -389,6 +389,13 @@ namespace sock {
 #endif
 	}
 
+	/**
+	 * \brief Receive packet from specific socket
+	 * \param in_socket - Receiving socket
+	 * \param in_socket - Receiving from this sockaddr
+	 * \param buffer - Pointer to buffer to fill
+	 * \param does_block - NO_BLOCK or BLOCK
+	*/
 	inline int ReceiveFrom(Socket* const in_socket, sockaddr_in* si, char* buffer, bool does_block) {
 		if (!in_socket) {
 			std::cout << "Trying to receive on nullptr socket\n";
@@ -434,6 +441,13 @@ namespace sock {
 		return -1;
 	}
 
+	/**
+	 * \brief Send a packet to specific socket
+	 * \param to_socket - The socket to send on
+	 * \param in_socket - Sending to this sockaddr
+	 * \param buffer - Buffer to send
+	 * \param bytes - Size of buffer in bytes
+	*/
 	inline int SendTo(Socket* const to_socket, sockaddr_in* si, char* buffer, uint16_t bytes) {
 		if (bytes > MAX_BUFFER_LENGTH)
 			return -1;
